@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      th, tr, td {
+        outline: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="item: ${items}">
+          <td th:text="${item.id}"></td>
+          <td th:text="${item.title}"></td>
+          <td th:text="${item.price}"></td>
+          <td><button th:attr="onclick=|onclickEvent(${item.id})|">Show Description</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+        function onclickEvent(id) {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = () => { alert(xhr.response); }
+            xhr.open("GET", `http://localhost:8080/item=${id}`);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

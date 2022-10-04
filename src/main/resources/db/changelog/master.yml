@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Jovan
+
+  - include:
+      file: db/changelog/sql/01-create-users-and-items-schema.sql
+
+  - include:
+      file: db/changelog/sql/02-insert-data-users.sql
+
+  - include:
+      file: db/changelog/sql/02-insert-data-items.sql
+
+  - include:
+      file: db/changelog/sql/03-add-email-users.sql
+
+  - include:
+      file: db/changelog/sql/04-add-description-items.sql
